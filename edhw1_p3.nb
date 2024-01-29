@@ -1,0 +1,106 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      3453,         98]
+NotebookOptionsPosition[      2707,         78]
+NotebookOutlinePosition[      3104,         94]
+CellTagsIndexPosition[      3061,         91]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["This is problem 3 on electrodynamics hw1", "Title",
+ CellChangeTimes->{{3.915220962967454*^9, 
+  3.915220978432235*^9}},ExpressionUUID->"fa2a7cab-b516-4f92-bae3-\
+10d1a8534bc1"],
+
+Cell["\<\
+This problem poses the question of determining the B field within a tightly \
+wound solenoid.\
+\>", "Text",
+ CellFrame->{{0, 0}, {0, 0.5}},
+ CellFrameColor->GrayLevel[0.75],
+ CellChangeTimes->{{3.915220982916377*^9, 
+  3.915221033508634*^9}},ExpressionUUID->"71b8f317-b41a-4e8c-ab11-\
+b9577749d4e2"],
+
+Cell[TextData[{
+ "We define N as the number density per unit length of the coils, the current \
+I (lowercase in this context because mathematica uses I for ",
+ Cell[BoxData[
+  FormBox[
+   SqrtBox[
+    RowBox[{"-", "1"}]], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "22c7efa2-15bc-48e7-9e51-e03d502558fd"],
+ "). We can now define the current density as follows"
+}], "Text",
+ CellChangeTimes->{{3.9152210351228228`*^9, 3.915221087920301*^9}, {
+  3.915221349113069*^9, 
+  3.915221386580936*^9}},ExpressionUUID->"de760f35-8857-4176-90af-\
+53ed7f3a4342"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"j", "=", 
+   RowBox[{"n", " ", 
+    FractionBox["i", "\[Rho]p"], 
+    RowBox[{"DiracDelta", "[", 
+     RowBox[{"\[Rho]p", "-", "a"}], "]"}]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.915221388649024*^9, 3.915221390522665*^9}, {
+  3.915221487276865*^9, 3.915221531943911*^9}},
+ CellLabel->"In[65]:=",ExpressionUUID->"e40887fd-6653-43c9-a8ac-ef91216c0638"],
+
+Cell["\<\
+Where here \[Rho]p is the primed rho cylindrical coordinate. We also have to \
+consider the vector associated which is in the phi hat direction, but we \
+cannot utilize that direction as the unit vector would change, so we put it \
+into cartesian and say that \[Phi]->-Sin[\[Phi]]x+Cos[\[Phi]]y. Then we need \
+to define the vectors r and r\[CloseCurlyQuote] (rp here) to start the \
+Biot-Savart.\
+\>", "Text",
+ CellChangeTimes->{{3.915221534327119*^9, 3.915221578341261*^9}, {
+  3.915221623162504*^9, 3.915221667588319*^9}, {3.915221728168571*^9, 
+  3.9152217736567383`*^9}},ExpressionUUID->"a3b6327a-e172-4ba8-95d0-\
+598dbda8422f"]
+}, Open  ]]
+},
+WindowSize->{1408.5, 786.75},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"13.2 for Linux x86 (64-bit) (January 31, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"c4f6916e-44e8-4716-b5d5-767857dfcead"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 183, 3, 98, "Title",ExpressionUUID->"fa2a7cab-b516-4f92-bae3-10d1a8534bc1"],
+Cell[766, 27, 309, 8, 43, "Text",ExpressionUUID->"71b8f317-b41a-4e8c-ab11-b9577749d4e2"],
+Cell[1078, 37, 574, 14, 37, "Text",ExpressionUUID->"de760f35-8857-4176-90af-53ed7f3a4342"],
+Cell[1655, 53, 390, 9, 49, "Input",ExpressionUUID->"e40887fd-6653-43c9-a8ac-ef91216c0638"],
+Cell[2048, 64, 643, 11, 58, "Text",ExpressionUUID->"a3b6327a-e172-4ba8-95d0-598dbda8422f"]
+}, Open  ]]
+}
+]
+*)
+
