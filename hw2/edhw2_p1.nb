@@ -1,0 +1,57 @@
+Homework 2 problem 1
+Problem 1a
+This problem has us looking at the metric for an oblate and prolate spheroid. We will start with the oblate case.
+In order to get the metric tensor, we want to determine the basis vectors of our system (not necessary but could prove helpful and provides an easy way to get the metric tensor).
+We are given the following coordinate transformation from cartesian to the oblate spheroid.
+In[2]:= $Assumptions=\[Xi]>0&&\[Gamma]>0&&\[Phi]>0;
+In[3]:= x=d Sqrt[1+\[Xi]^2]Sin[\[Gamma]]Cos[\[Phi]];
+y=d Sqrt[1+\[Xi]^2]Sin[\[Gamma]]Sin[\[Phi]];
+z=d \[Xi] Cos[\[Gamma]];
+We can easily get the basis vectors by knowing that the basis vectors transform as derivatives (ie \[PartialD]Overscript[r, \[RightVector]]/\[PartialD]Subscript[x, i]==Overscript[Subscript[e, Subscript[x, i]], \[RightVector]]) where the Subscript[x, i] here reference the three new coordinates \[Xi] \[Gamma] \[Phi]. Thus...
+In[6]:= e\[Xi]=D[{x,y,z},\[Xi]]
+e\[Gamma]=D[{x,y,z},\[Gamma]]
+e\[Phi]=D[{x,y,z},\[Phi]]
+Out[6]= {(d \[Xi] Cos[\[Phi]] Sin[\[Gamma]])/Sqrt[1+\[Xi]^2],(d \[Xi] Sin[\[Gamma]] Sin[\[Phi]])/Sqrt[1+\[Xi]^2],d Cos[\[Gamma]]}
+Out[7]= {d Sqrt[1+\[Xi]^2] Cos[\[Gamma]] Cos[\[Phi]],d Sqrt[1+\[Xi]^2] Cos[\[Gamma]] Sin[\[Phi]],-d \[Xi] Sin[\[Gamma]]}
+Out[8]= {-d Sqrt[1+\[Xi]^2] Sin[\[Gamma]] Sin[\[Phi]],d Sqrt[1+\[Xi]^2] Cos[\[Phi]] Sin[\[Gamma]],0}
+Great, now that we have these new basis vectors, we can solve for the components of the metric tensor simply by finding their inner products. We can speed this up in mathematica by looping. To be clear, all that is happening here is I am taking the inner product of each of the above basis vectors and automatically inserting them into the array. Then I simplify the contents and display them. I've included all this info into the following function G which just calculates the metric tensor.
+In[23]:= G[basisVecs_List]:=Module[{dimension,metricTensor},
+dimension=Length[basisVecs];
+metricTensor=ConstantArray[0,{dimension,dimension}];
+
+For[i=1,i<=dimension,i++,
+For[j=1,j<=dimension,j++,
+metricTensor[[i]][[j]]=Dot[basisVecs[[i]],basisVecs[[j]]]
+];
+];
+
+Return[metricTensor];
+]
+So now we can use this for both of the geometries...
+In[12]:= oblateBasis={e\[Xi],e\[Gamma],e\[Phi]};
+FullSimplify[G[oblateBasis]] //MatrixForm
+Out[13]//MatrixForm= ((d^2 (1+2 \[Xi]^2+Cos[2 \[Gamma]]))/(2 (1+\[Xi]^2))	0	0
+0	1/2 d^2 (1+2 \[Xi]^2+Cos[2 \[Gamma]])	0
+0	0	d^2 (1+\[Xi]^2) Sin[\[Gamma]]^2
+
+)
+Great, now that we have that, we can go ahead and find it for the prolate case. I'm gonna wipe the current variables and then we should be able to make the process pretty quick...
+In[14]:= Clear["Global`*"]
+(*define the coordinate system*)
+x=d \[Xi] Sin[\[Gamma]]Cos[\[Phi]];
+y=d \[Xi] Sin[\[Gamma]]Sin[\[Phi]];
+z=d Sqrt[1+\[Xi]^2]Cos[\[Gamma]];
+(*now we calculate the basis vectors*)
+e\[Xi]=D[{x,y,z},\[Xi]];
+e\[Gamma]=D[{x,y,z},\[Gamma]];
+e\[Phi]=D[{x,y,z},\[Phi]];
+(*now we can just repeat the code from before (maybe I even made it into a function at some point and we can just call it here)*)
+prolateBasis={e\[Xi],e\[Gamma],e\[Phi]};
+(*now we use the handy function from before and suddenly we are done*)
+In[24]:= FullSimplify[G[prolateBasis]]//MatrixForm
+Out[24]//MatrixForm= ((d^2 (1+2 \[Xi]^2-Cos[2 \[Gamma]]))/(2 (1+\[Xi]^2))	0	0
+0	-(1/2) d^2 (-1-2 \[Xi]^2+Cos[2 \[Gamma]])	0
+0	0	d^2 \[Xi]^2 Sin[\[Gamma]]^2
+
+)
+We can see that the diagonal structure of a metric indicates an orthogonal coordinate system as the components of the metric tensor are themselves the inner products of the basis vectors of the coordinate system. Thus it is definitionally orthogonal if the offdiagonal components are zero as those are the Subscript[g, ij] components where i!=j. Since clearly the offdiagonals are zero, our coordinate basis is orthogonal.
