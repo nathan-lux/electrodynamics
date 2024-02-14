@@ -1,0 +1,8 @@
+Homework 2 Part 3
+This problem is focused on finding the self capacitance of prolate and oblate spheroids.
+Quite frankly, I do not know how to find the self capacitance of an oblate spheroid or a prolate spheroid
+I was however able to find a compendium 
+In[1]:= Plot[e/ArcSin[e],{e,-1,1}]
+Out[1]= 
+In[3]:= Plot[e/Log[(1+e)/Sqrt[1-e^2]],{e,-1,1}]
+Out[3]= 

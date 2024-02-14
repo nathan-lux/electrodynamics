@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath} 
+
+\oddsidemargin = -2pt
+
+\title{asdf}
+\author{Nathan Burwig}
+\date{February 2024}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+\begin{align*}
+    \nabla^2 &= \frac{1}{h_1 h_2 h_3} \sum_{\text{cyclic}}
+        \frac{\partial}{\partial{u_i}} 
+        \left(\frac{h_j h_k}{h_i}\right) 
+        \frac{\partial}{\partial{u_i}}\\
+      &=
+      \frac{2\sqrt{d^2(1+\xi^2)\csc(\gamma)^2}}
+      {d^4\xi(1+2\xi^2-\cos(2\gamma)}
+      \left(
+          \partial_{\xi}\left(\xi \sqrt{d^2 (1+\xi^2)}\sin(\gamma)\partial_{\xi}\right) +
+          \partial_{\gamma}\left(\xi
+          \sqrt{\frac{d^2}{1+\xi^2}}\sin(\gamma)\partial_{\gamma}\right) +
+          \partial_{\phi}\left(\sqrt{\frac{d^2(\xi^2\csc(\gamma)+\sin(\gamma))^2}{xi^2+xi^4}}\right)
+      \partial{\phi}\right)
+\end{align*}
+\[
+    \nabla^2=\frac{\sqrt{1+\xi^2}}{d^2(\xi^2+\sin^2(\gamma))\xi}\left(
+    \partial_{\xi}\left(\xi\sqrt{1+\xi^2}\partial_{\xi}\right)+\frac{1}{d^2(\xi^2+\sin^2(\gamma))\sin(\gamma)}\partial_{\gamma}\left(\sin(\gamma)\partial_{\gamma}\right)
+    + \frac{1}{d^2\xi^2\sin^2(\gamma)}\partial_{\phi}^2
+    \right)
+\]
+
+\[
+    \frac{4}{d^3(\sin(\gamma)+4\xi^2\sin(\gamma)+\sin(3\gamma)}
+    \left( 
+        \partial_{\xi}\left(d (1+\xi^2) \sin(\gamma)\right)\partial_{\xi} +
+        \partial_{\gamma}\left( d \sin(\gamma)\partial_{\gamma}\right)+
+        \partial_{\phi}\left(\frac{(1+2\xi^2+\cos(2\gamma))\sqrt{d^2
+        \csc^2(\gamma)}}{2(1+\xi^2)}\partial_{\phi}\right)
+    \right) 
+\]
+
+\[
+    \nabla^2=\frac{1}{d^2(\xi^2+\cos^2(\gamma))} \left(\partial_{\xi}\left( (\xi^2 +
+        1)\partial_{\xi}\right)+\frac{1}{\sin(\gamma)}
+    \partial_{\gamma}\left(\sin(\gamma)\partial_{\gamma}\right)\right)+\frac{1}{d^2(\xi^2+1)\sin^2(\gamma)}
+    \partial_{\phi}^2
+\]
+\end{document}
